@@ -1,0 +1,29 @@
+ORG 0100H
+
+.DATA
+SUM DW 0
+.CODE   
+
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX
+    
+    MOV CX,50
+    
+    MOV BX,1
+    CALCULATE_SUM:
+    ADD SUM,BX
+    ADD BX,4
+    LOOP CALCULATE_SUM
+    
+    MOV AH,2
+    MOV DX,SUM
+    INT 21H
+    
+    MOV AH,4CH
+    INT 21H
+    
+    MAIN ENDP
+END MAIN
+    
+
